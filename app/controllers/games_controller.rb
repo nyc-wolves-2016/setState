@@ -1,6 +1,5 @@
 class GamesController < ApplicationController
 
-<<<<<<< HEAD
   def new
     Game.all
   end
@@ -20,7 +19,4 @@ class GamesController < ApplicationController
     render 'games/show'
   end
 
-
-=======
->>>>>>> React svgs in card component.
 end
