@@ -16,16 +16,19 @@ class GameView extends React.Component {
   render() {
     let { cards } = this.props.cards;
     return(
-  <div className="row">
-    {cards.map((card, i) =>
-      <div className="col-md-4">
-        <Card key={i} data={card} />
+  <div class="container gameView">
+    <h1 class="h1 text-center">Let's Play setState()</h1>
+    <div className="row">
+      {cards.map((card, i) =>
+        <div className="col-md-4">
+          <Card key={i} data={card} />
+        </div>
+        )}
+    </div>
+    <div className="row">
+      <div className="col-md-4 col-md-offset-8">
+        <button type="button" className="btn btn-primary guessButton">Submit Guess</button>
       </div>
-      )}
-  </div>
-  <div className="row">
-    <div className="col-md-4 col-md-offset-8">
-      <button type="button" className="btn btn-primary guessButton">Submit Guess</button>
     </div>
   </div>
       )
