@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'games#new'
 
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
@@ -9,5 +10,4 @@ Rails.application.routes.draw do
 
   resources :games, except: :destroy
 
-  root 'games#new'
 end
