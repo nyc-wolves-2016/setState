@@ -19,5 +19,4 @@ class GamesController < ApplicationController
     render 'games/show'
   end
 
-
 end
