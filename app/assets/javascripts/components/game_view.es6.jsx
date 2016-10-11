@@ -2,17 +2,62 @@ class GameView extends React.Component {
   constructor() {
     super();
     this.initialCards = this.initialCards.bind(this);
+    this.composeSet = this.composeSet.bind(this);
+    this.validateSet = this.validateSet.bind(this)
   }
 
-  initialCards() {
-    var firstCards = [];
-    for (var i=0; i<9; i++) {
-      var index = Math.floor(Math.random()*this.props.cards.length)
-      firstCards.push(this.props.cards[index])
-      this.props.cards.splice(index, 1)
-    }
-    return firstCards
+
+
+  composeSet() {
+    // Take data from handleClick in Card Component
+    // push into empty array until 3 have been pushed
+    // array of 3, set
   }
+
+  validateSet(setArray) {
+    // Check if 'setArray' is valid
+    // if valid
+      // this.props.onThree
+    // Send data up to App for handleThree function
+    // Make ajax call to update number of guesses
+    // and correct guesses IF correct
+    // If invalid, this.props.onError()
+
+    var hasDuplicates = function(array) {
+        return (new Set(array)).size !== array.length;
+    }
+    var verifier = []
+    for (var key in setArray[0]) {
+    	let currentProp = []
+    	setArray.forEach(card => {
+    		currentProp.push(card[key])
+    	})
+    	let repeats = currentProp.filter(card => currentProp[0] === card).length
+    	if ((hasDuplicates(currentProp) && repeats === 3) || !hasDuplicates(currentProp)) {
+    		verifier.push("OK!")
+    	}
+    }
+
+    if (Boolean(verifier.length === 4)) {
+      var correct = {correct: true};
+    } else {
+      var correct = {correct: false};
+    }
+    $.ajax ({
+      method: 'put',
+      url: '/games/' + this.props.data.gameId,
+      data: correct
+    })
+    .done(response => {
+      if (correct) {
+        this.props.onThree(setArray)
+      } else {
+        this.props.onError("Doh!")
+      }
+    })
+  }
+
+
   render() {
     let { cards } = this.props.cards;
     return(
@@ -20,7 +65,7 @@ class GameView extends React.Component {
   <div className="row">
     {cards.map((card, i) =>
       <div className="col-md-4">
-        <Card key={i} data={card} />
+        <Card key={i} data={card} handleClick={this.composeSet} />
       </div>
       )}
   </div>
