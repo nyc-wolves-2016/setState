@@ -10,6 +10,7 @@ class App extends React.Component {
     };
     // Defines method to pull data from GameView
     this.handleThree = this.handleThree.bind(this);
+    this.handleError = this.handleError.bind(this);
   }
 
   constructDeck() {

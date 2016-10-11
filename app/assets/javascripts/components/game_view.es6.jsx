@@ -65,7 +65,7 @@ class GameView extends React.Component {
       var correct = {correct: false};
     }
     $.ajax ({
-      method: 'put',
+      method: 'PUT',
       url: '/games/' + this.props.data.gameId,
       data: correct
     })
