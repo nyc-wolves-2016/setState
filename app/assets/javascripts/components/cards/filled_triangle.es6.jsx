@@ -2,7 +2,7 @@ class FilledTriangle extends React.Component {
   render() {
     let {color} = this.props.card
     return(
-      <svg width="100" height="100">
+      <svg width="50" height="50">
        <g>
         <title>background</title>
         <rect fill="none" id="canvas_background" height="52" width="52" y="-1" x="-1"/>

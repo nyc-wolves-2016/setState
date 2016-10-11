@@ -1,54 +1,65 @@
-class Card extends React.Component  {
+class Card extends React.Component {
 
   drawSvg(card) {
-    switch (card) {
-      case (card.shape === "triangle" && shading === "checkered"):
+      if (card.shape === "triangle" && card.shading === "checkered"){
         return <CheckeredTriangle card={card} />
-      case (card.shape === "triangle" && shading === "empty"):
+      }
+      else if (card.shape === "triangle" && card.shading === "empty"){
         return <EmptyTriangle card={card} />
-      case (card.shape === "triangle" && shading === "fill"):
+      }
+      else if (card.shape === "triangle" && card.shading === "fill"){
         return <FilledTriangle card={card} />
-      case (card.shape === "triad" && shading === "checkered"):
+      }
+      else if (card.shape === "triad" && card.shading === "checkered"){
         return <CheckeredTriad card={card} />
-      case (card.shape === "triad" && shading === "empty"):
+      }
+      else if (card.shape === "triad" && card.shading === "empty"){
         return <EmptyTriad card={card} />
-      case (card.shape === "triad" && shading === "fill"):
+      }
+    else if (card.shape === "triad" && card.shading === "fill"){
         return <FilledTriad card={card} />
-      case (card.shape === "sun" && shading === "checkered"):
+      }
+      else if (card.shape === "sun" && card.shading === "checkered"){
         return <CheckeredSun card={card} />
-      case (card.shape === "sun" && shading === "empty"):
+      }
+      else if (card.shape === "sun" && card.shading === "empty"){
         return <EmptySun card={card} />
-      case (card.shape === "sun" && shading === "fill"):
+      }
+      else if (card.shape === "sun" && card.shading === "fill"){
         return <FilledSun card={card} />
+      }
     }
-  }
-  drawCard(number, card){
+
+  drawCard(number, card) {
     if (number === 1) {
       return (
-        <div className="card">
-          {drawSvg(card)}
+        <div className="card-svgs">
+          {this.drawSvg(card)}
         </div>
       )
     } else if (number === 2) {
       return (
-        <div className="card">
-          {drawSvg(card)}
-          {drawSvg(card)}
+        <div className="card-svgs">
+          {this.drawSvg(card)}
+          {this.drawSvg(card)}
         </div>
             )
     } else {
       return (
-        <div className="card">
-          {drawSvg(card)}
-          {drawSvg(card)}
-          {drawSvg(card)}
+        <div className="card-svgs">
+          {this.drawSvg(card)}
+          {this.drawSvg(card)}
+          {this.drawSvg(card)}
         </div>
       )
     }
-  };
+  }
+
   render(){
     return (
-            {this.drawCard(this.props.card.number, this.props.card)}
-          )
-    }
+      <div className="card">
+        {this.drawCard(this.props.card.number, this.props.card)}
+      </div>
+    );
+  }
 }
