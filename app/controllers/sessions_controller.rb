@@ -16,9 +16,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    puts "*" * 25
-    puts "I'm in destroy session route"
-    puts "*" * 25
     log_out
     redirect_to root_url
   end
