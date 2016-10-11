@@ -27,7 +27,7 @@ class GameView extends React.Component {
 		      }
 	      }
     }
-
+    return Boolean(combos.filter(combo => validateSet(combo)).length > 0)
   }
 
   validateSet(setArray) {
@@ -53,8 +53,13 @@ class GameView extends React.Component {
     		verifier.push("OK!")
     	}
     }
+    return Boolean(verifier.length ===4)
 
-    if (Boolean(verifier.length === 4)) {
+  }
+
+  updateGame(setArray){
+    var set = validateSet(setArray);
+    if (set) {
       var correct = {correct: true};
     } else {
       var correct = {correct: false};
