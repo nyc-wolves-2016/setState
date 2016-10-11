@@ -1,102 +1,54 @@
 class Card extends React.Component  {
-render(){
-  // let { shape, color, shading, number } = this.props.data;
-  function renderRect(number, color, shading)
-    {if (number === 1) {
-      <g className="shapes">
-      <rect x="10" y="0" width="100" height="50"/>
-      </g>
-    } else if (number === 2) {
-      <g className="shapes">
-      <rect x="10" y="0" width="100" height="50"/>
-      <rect x="10" y="65" width="100" height="50"/>
-      </g>
-    } else {
-      <g className="shapes">
-      <rect x="10" y="0" width="100" height="50"/>
-      <rect x="10" y="65" width="100" height="50"/>
-      <rect x="10" y="130" width="100" height="50"/>
-      </g>
-    };
+
+  drawSvg(card) {
+    switch (card) {
+      case (card.shape === "triangle" && shading === "checkered"):
+        return <CheckeredTriangle card={card} />
+      case (card.shape === "triangle" && shading === "empty"):
+        return <EmptyTriangle card={card} />
+      case (card.shape === "triangle" && shading === "fill"):
+        return <FilledTriangle card={card} />
+      case (card.shape === "triad" && shading === "checkered"):
+        return <CheckeredTriad card={card} />
+      case (card.shape === "triad" && shading === "empty"):
+        return <EmptyTriad card={card} />
+      case (card.shape === "triad" && shading === "fill"):
+        return <FilledTriad card={card} />
+      case (card.shape === "sun" && shading === "checkered"):
+        return <CheckeredSun card={card} />
+      case (card.shape === "sun" && shading === "empty"):
+        return <EmptySun card={card} />
+      case (card.shape === "sun" && shading === "fill"):
+        return <FilledSun card={card} />
+    }
   }
-  function renderCircle(number, color, shading)
-    {if (number === 1) {
-      <g className="shapes">
-      <circle cx="50" cy="20" r="30"/>
-      </g>
+  drawCard(number, card){
+    if (number === 1) {
+      return (
+        <div className="card">
+          {drawSvg(card)}
+        </div>
+      )
     } else if (number === 2) {
-      <g className="shapes">
-      <circle cx="50" cy="20" r="30"/>
-      <circle cx="50" cy="85" r="30"/>
-      </g>
-    } else {
-      <g className="shapes">
-      <circle cx="50" cy="20" r="30"/>
-      <circle cx="50" cy="85" r="30"/>
-      <circle cx="50" cy="150" r="30"/>
-      </g>
-    };
-  }
-  function renderTriangle(number, color, shading)
-    {if (number === 1) {
-      <g className="shapes">
-      <circle cx="50" cy="20" r="30"/>
-      </g>
-    } else if (number === 2) {
-      <g className="shapes">
-      <circle cx="50" cy="20" r="30"/>
-      <circle cx="50" cy="85" r="30"/>
-      </g>
-    } else {
-      <g className="shapes">
-      <circle cx="50" cy="20" r="30"/>
-      <circle cx="50" cy="85" r="30"/>
-      <circle cx="50" cy="150" r="30"/>
-      </g>
-    };
-  }
-
-  return (
-          <div>
-              <svg width="50" height="50">
-
-               <g>
-                <title>background</title>
-                <rect fill="none" id="canvas_background" height="52" width="52" y="-1" x="-1"/>
-               </g>
-               <g>
-                <title>Layer 1</title>
-                <g stroke="null" id="svg_1">
-                 <g stroke="null" id="svg_2">
-                  <path fill="none" stroke="black" id="triangle" d="m46.809916,46.404017l-20.920659,-43.812866c-0.317269,-0.666152 -1.406688,-0.666152 -1.723957,0l-21.023867,44.027259c-0.141433,0.296705 -0.120409,0.645095 0.053515,0.922658c0.173925,0.277563 0.479726,0.44793 0.808463,0.44793l42.085959,0c0.527508,0 0.95563,-0.428787 0.95563,-0.957114c0,-0.239279 -0.087918,-0.459415 -0.235085,-0.627867z"/>
-                 </g>
-                </g>
-               </g>
-              </svg>
-              <svg width="50" height="50">
-
-               <g>
-                <title>background</title>
-                <rect fill="none" id="canvas_background" height="52" width="52" y="-1" x="-1"/>
-               </g>
-               <g>
-                <title>Layer 1</title>
-                <path stroke="null" id="svg_1" d="m49.600004,38.503447l-16.996775,-18.206896l0,-17.296551l-14.172859,0c0,0 0,12.744827 0,17.239655c-3.303448,3.527586 -16.730367,17.865517 -16.730367,17.865517l10.016908,10.696551l13.746608,-14.67931l14.119578,15.077586l10.016908,-10.696551z"/>
-               </g>
-              </svg>
-              <svg width="50" height="50">
-
-               <g>
-                <title>background</title>
-                <rect fill="none" id="canvas_background" height="52" width="52" y="-1" x="-1"/>
-               </g>
-               <g>
-                <title>Layer 1</title>
-                <polygon stroke="null" id="svg_1" points="44.53125,28.342857360839844 51.599998474121094,26 44.53125,23.657142639160156 50.6678581237793,19.630355834960938 43.210716247558594,19.04464340209961 48.10446548461914,13.700000762939453 40.724998474121094,14.9446439743042 43.98750305175781,8.575000762939453 37.22946548461914,11.649999618530273 38.55000305175781,4.694642543792725 32.87946701049805,9.307143211364746 32.25803756713867,2.278571605682373 27.985715866088867,8.0625 25.5,1.3999996185302734 23.014286041259766,8.0625 18.74196434020996,2.278571605682373 18.12053680419922,9.307143211364746 12.450000762939453,4.694642543792725 13.770537376403809,11.649999618530273 7.012500762939453,8.575000762939453 10.275001525878906,14.9446439743042 2.895535469055176,13.700000762939453 7.7892866134643555,19.04464340209961 0.3321428894996643,19.630355834960938 6.46875,23.657142639160156 -0.6000003814697266,26 6.46875,28.342857360839844 0.3321428894996643,32.36964416503906 7.7892866134643555,32.95535659790039 2.895535469055176,38.30000305175781 10.275001525878906,37.055355072021484 7.012500762939453,43.42500305175781 13.770537376403809,40.349998474121094 12.450000762939453,47.305355072021484 18.12053680419922,42.6928596496582 18.74196434020996,49.721431732177734 23.014286041259766,43.9375 25.5,50.599998474121094 27.985715866088867,43.9375 32.25803756713867,49.721431732177734 32.87946701049805,42.6928596496582 38.55000305175781,47.305355072021484 37.22946548461914,40.349998474121094 43.98750305175781,43.42500305175781 40.724998474121094,37.055355072021484 48.10446548461914,38.30000305175781 43.210716247558594,32.95535659790039 50.6678581237793,32.36964416503906 "/>
-               </g>
-              </svg>
-
-              </div>
+      return (
+        <div className="card">
+          {drawSvg(card)}
+          {drawSvg(card)}
+        </div>
             )
-        }
+    } else {
+      return (
+        <div className="card">
+          {drawSvg(card)}
+          {drawSvg(card)}
+          {drawSvg(card)}
+        </div>
+      )
+    }
+  };
+  render(){
+    return (
+            {this.drawCard(this.props.card.number, this.props.card)}
+          )
+    }
 }
