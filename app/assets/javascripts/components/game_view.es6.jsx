@@ -3,7 +3,8 @@ class GameView extends React.Component {
     super();
     this.initialCards = this.initialCards.bind(this);
     this.composeSet = this.composeSet.bind(this);
-    this.validateSet = this.validateSet.bind(this)
+    this.validateSet = this.validateSet.bind(this);
+    this.validateBoard = this.validateBoard.bind(this);
   }
 
 
@@ -12,6 +13,21 @@ class GameView extends React.Component {
     // Take data from handleClick in Card Component
     // push into empty array until 3 have been pushed
     // array of 3, set
+  }
+
+  validateBoard() {
+    var combos = []
+    var board = this.props.data.currentBoard;
+    for (var i=0; i < board.length - 2; i+=1){
+    	var j = i + 1;
+    	for (j; j < board.length - 1; j+=1) {
+    		var k = j + 1;
+    		for (k; k < board.length; k+=1) {
+    			combos.push([array[i], array[j], array[k]])
+		      }
+	      }
+    }
+
   }
 
   validateSet(setArray) {
