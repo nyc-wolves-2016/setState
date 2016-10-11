@@ -67,7 +67,7 @@ class App extends React.Component {
       newThree.push(this.state.cards[index])
       this.state.cards.splice(index, 1)
     }
-    return firstCards
+    return newThree
   }
 
   handleThree(set) {
