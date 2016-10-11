@@ -24,21 +24,31 @@ class Card extends React.Component  {
   }
   drawCard(number, card){
     if (number === 1) {
-      drawSvg(card)
+      return (
+        <div className="card">
+          {drawSvg(card)}
+        </div>
+      )
     } else if (number === 2) {
-      drawSvg(card)
-      drawSvg(card)
+      return (
+        <div className="card">
+          {drawSvg(card)}
+          {drawSvg(card)}
+        </div>
+            )
     } else {
-      drawSvg(card)
-      drawSvg(card)
-      drawSvg(card)
+      return (
+        <div className="card">
+          {drawSvg(card)}
+          {drawSvg(card)}
+          {drawSvg(card)}
+        </div>
+      )
     }
   };
   render(){
     return (
-          <div className="card">
             {this.drawCard(this.props.card.number, this.props.card)}
-          </div>
           )
     }
 }
