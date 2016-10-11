@@ -6,15 +6,7 @@ class GameView extends React.Component {
     this.validateSet = this.validateSet.bind(this)
   }
 
-  initialCards() {
-    var firstCards = [];
-    for (var i=0; i<9; i++) {
-      var index = Math.floor(Math.random()*this.props.cards.length)
-      firstCards.push(this.props.cards[index])
-      this.props.cards.splice(index, 1)
-    }
-    return firstCards
-  }
+
 
   composeSet() {
     // Take data from handleClick in Card Component
