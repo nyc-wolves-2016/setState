@@ -1,19 +1,18 @@
-<h1>Users#new</h1>
-<p>Enter Registration Information Below: </p>
+<h1 class="h1 text-center">Register</h1>
+<div class="container">
 
-    <%= form_for(:users, url: '/register') do |f| %>
+  <h2 class="h2">Enter Registration Information Below: </h2>
 
-      <%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control' %><br><br>
+  <%= form_for(:users, url: '/register') do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username, class: 'form-control' %><br><br>
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %><br><br>
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %><br><br>
+  <%= f.submit "Create", class: "btn btn-primary" %>
+  <% end %>
+  <hr>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %><br><br>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %><br><br>
-
-      <%= f.submit "Create", class: "btn btn-primary" %>
-    <% end %>
-    <hr>
-
-    <p>New user? <%= link_to "Sign up now!", login_path %></p>
+  <p class="text-center">New user? <%= link_to "Sign up now!", login_path %></p>
+</div>
