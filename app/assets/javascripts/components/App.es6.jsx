@@ -2,14 +2,15 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cards = this.constructDeck();
-      currentBoard = this.firstBoard();
-      correctGuesses = [];
-      errors = [];
-      gameId = 1;
+      cards: this.constructDeck(),
+      currentBoard: this.firstBoard(),
+      correctGuesses: [],
+      errors: [],
+      gameId: 1
     };
     // Defines method to pull data from GameView
     this.handleThree = this.handleThree.bind(this);
+    this.handleError = this.handleError.bind(this);
   }
 
   constructDeck() {
@@ -84,7 +85,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="appContainer">
-        <GameView data={this.state.currentBoard, this.state.correctGuesses, this.state.gameId} addThree={} onThree={this.handleThree} onError={this.handleError} />
+        <GameView data={this.state.currentBoard, this.state.correctGuesses, this.state.gameId} onThree={this.handleThree} onError={this.handleError} />
       </div>
     )
   }

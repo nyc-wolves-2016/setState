@@ -1,14 +1,15 @@
 class GamesController < ApplicationController
 
   def new
-    Game.all
+    # Game.all
   end
 
   def create
+    # binding.pry
     @game = Game.new()
     current_user.games << @game
     if @game.save
-      redirect_to 'games/show'
+      redirect_to '/games/show'
     else
       render 'games/new'
     end

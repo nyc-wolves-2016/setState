@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
 
     user.save
-    log_in user
+    log_in(user)
     redirect_to root_url
   end
 private
