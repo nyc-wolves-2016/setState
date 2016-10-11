@@ -16,6 +16,7 @@ class GameView extends React.Component {
   render() {
     let { cards } = this.props.cards;
     return(
+  <div className="board">
   <div className="row">
     {cards.map((card, i) =>
       <div className="col-md-4">
@@ -27,6 +28,7 @@ class GameView extends React.Component {
     <div className="col-md-4 col-md-offset-8">
       <button type="button" className="btn btn-primary guessButton">Submit Guess</button>
     </div>
+  </div>
   </div>
       )
   }
