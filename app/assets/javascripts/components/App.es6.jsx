@@ -83,7 +83,9 @@ class App extends React.Component {
   }
 
   removeFromBoard(newBoard) {
-    newBoard = newBoard.concat(this.nextThree())
+    if (newBoard.length <= 9) {
+      newBoard = newBoard.concat(this.nextThree())
+    }
     this.setState((prevState) => {
       return {
         currentBoard: newBoard
