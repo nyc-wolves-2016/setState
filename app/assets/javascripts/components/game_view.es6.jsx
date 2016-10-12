@@ -79,8 +79,10 @@ class GameView extends React.Component {
     	}
     }
     return Boolean(verifier.length ===4)
-
   }
+
+
+
   render() {
     let { board } = this.props;
     return(
@@ -95,7 +97,9 @@ class GameView extends React.Component {
     </div>
   <div className="row">
     <div className="col-md-4 col-md-offset-8">
-      <button type="button" className="btn btn-primary guessButton">Submit Guess</button>
+
+      <button type="button" onClick={this.props.onNextThree} className="btn btn-primary addThreeButton">Add Three</button>
+      <button type="button" onClick={this.props.onQuit} className="btn btn-primary addQuitButton">Quit</button>
     </div>
   </div>
   </div>
