@@ -81,15 +81,15 @@ class GameView extends React.Component {
   render() {
     let { board } = this.props;
     return(
-  <div className="board">
-  <div className="row">
-    {board.map((card, i) =>
-      <div className="col-md-4">
-        <Card key={i} card={card} handleClick={this.composeSet} />
-      </div>
-      )
-    }
-  </div>
+  <div className="container board">
+    <div className="row">
+      {board.map((card, i) =>
+        <div className="col-md-4 text-center">
+          <Card key={i} card={card} handleClick={this.composeSet} />
+        </div>
+        )
+      }
+    </div>
   <div className="row">
     <div className="col-md-4 col-md-offset-8">
       <button type="button" className="btn btn-primary guessButton">Submit Guess</button>

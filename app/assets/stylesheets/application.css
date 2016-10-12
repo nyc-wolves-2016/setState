@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.card-svgs {
+  height: 150px;
+  border: 1px solid black;
+  width: 120px;
+  text-align: center;
+  margin: auto;
+  position: relative;
+}
+
+svg {
+  margin-top: 50px;
+}
