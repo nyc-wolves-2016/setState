@@ -15,6 +15,8 @@ class App extends React.Component {
     this.addCorrectGuess = this.addCorrectGuess.bind(this);
     this.handleNextThree = this.handleNextThree.bind(this);
     this.handleQuit = this.handleQuit.bind(this);
+    this.updateGame = this.updateGame.bind(this);
+
   }
 
   constructDeck() {
@@ -107,13 +109,25 @@ class App extends React.Component {
       updateBoard.splice(boardIndex, 1)
     })
     that.removeFromBoard(updateBoard)
+    this.updateGame({valid: true});
   }
 
+  updateGame(bool) {
+    var path = '/games/' + this.state.gameId
+    $.ajax({
+      url: path,
+      method: 'put',
+      data: bool
+    })
+
+  }
 
   handleError(error) {
+
     // False set comes in from GameView
     // Throw 'error' to top of GameView
     // this.setState(prevState)
+    this.updateGame({valid: false});
   }
 
   handleNextThree() {

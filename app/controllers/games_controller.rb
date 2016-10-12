@@ -20,4 +20,13 @@ class GamesController < ApplicationController
     render 'games/show'
   end
 
+  def update
+    @game = Game.find_by(id: params[:id])
+    @game.increment(:guesses)
+    if params[:valid] == "true"
+      @game.increment(:sets_found)
+    end
+    @game.save
+  end
+
 end
