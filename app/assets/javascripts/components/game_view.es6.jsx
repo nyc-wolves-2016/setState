@@ -6,12 +6,8 @@ class GameView extends React.Component {
     this.validateBoard = this.validateBoard.bind(this);
   }
 
-
-
-  composeSet() {
-    // Take data from handleClick in Card Component
-    // push into empty array until 3 have been pushed
-    // array of 3, set
+  componentDidMount() {
+    this.setState(prev)
   }
 
   validateBoard() {
@@ -77,6 +73,12 @@ class GameView extends React.Component {
     })
   }
 
+  composeSet() {
+    // Take data from handleClick in Card Component
+    // push into empty array until 3 have been pushed
+    // array of 3, set
+
+  }
 
   render() {
     let { board } = this.props;

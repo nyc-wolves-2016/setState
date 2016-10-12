@@ -55,6 +55,8 @@ class Card extends React.Component {
     }
   }
 
+  
+
   render(){
     debugger;
     let {number} = this.props.card
