@@ -12,6 +12,7 @@ class App extends React.Component {
     // Defines method to pull data from GameView
     this.handleThree = this.handleThree.bind(this);
     this.handleError = this.handleError.bind(this);
+    this.addCorrectGuess = this.addCorrectGuess.bind(this);
   }
 
   constructDeck() {
@@ -73,17 +74,37 @@ class App extends React.Component {
     return newThree
   }
 
+  addCorrectGuess(card) {
+    this.setState((prevState) => {
+      return {
+        correctGuesses: [...prevState.correctGuesses, card]
+      }
+    })
+  }
+
+  removeFromBoard(newBoard) {
+    newBoard = newBoard.concat(this.nextThree())
+    this.setState((prevState) => {
+      return {
+        currentBoard: newBoard
+      }
+    })
+  }
+
+
   handleThree(set) {
     // set comes from onThree / handleThree
     // Remove set from GameView (?)
-    var newCorrect =[];
+    var that = this;
+    var updateBoard = this.state.currentBoard.slice();
     set.forEach(function(setCard) {
-      correctGuesses.push(setCard)
-      var boardIndex = this.state.currentBoard.indexOf(setCard)
-      this.setState({currentBoard: this.state.gicurrentBoard.splice(boardIndex, 1)})
+      var boardIndex = updateBoard.indexOf(setCard)
+      that.addCorrectGuess(setCard)
+      updateBoard.splice(boardIndex, 1)
     })
-    this.setState({correctGuesses: [...this.state.correctGuesses, newCorrect]})
+    that.removeFromBoard(updateBoard)
   }
+
 
   handleError(error) {
     // False set comes in from GameView
@@ -91,7 +112,7 @@ class App extends React.Component {
     // this.setState(prevState)
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.setState({cards: this.constructDeck()}, () => {
       this.setState({currentBoard: this.firstBoard()})
     })
