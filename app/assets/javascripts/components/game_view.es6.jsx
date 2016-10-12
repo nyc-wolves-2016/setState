@@ -51,8 +51,15 @@ class GameView extends React.Component {
 
   composeSet(cardValue) {
     this.setArray.push(cardValue)
-    if (this.setArray.length === 3) {
-      this.validateSet(this.setArray)
+    console.log(this.setArray)
+    if (this.setArray.length === 3 && this.validateSet(this.setArray)) {
+      this.props.onThree(this.setArray)
+      // Reset set array
+      this.setArray = [];
+    } else if (this.setArray.length === 3) {
+      this.props.onError("Yah fucked up, boi (or girl, i didn't assume any gender)")
+      // Reset set array
+      this.setArray = [];
     }
   }
 
@@ -72,7 +79,7 @@ class GameView extends React.Component {
     	}
     }
     return Boolean(verifier.length ===4)
-    
+
   }
   render() {
     let { board } = this.props;
