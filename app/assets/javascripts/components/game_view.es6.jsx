@@ -99,7 +99,7 @@ class GameView extends React.Component {
     <div className="col-md-4 col-md-offset-8">
 
       <button type="button" onClick={this.props.onNextThree} className="btn btn-primary addThreeButton">Add Three</button>
-      <button type="button" onClick={this.props.onQuit} className="btn btn-primary addQuitButton">Quit</button>
+      <a href="/"><button type="button" onClick={this.props.onQuit} className="btn btn-primary addQuitButton">Quit</button></a>
     </div>
   </div>
   </div>

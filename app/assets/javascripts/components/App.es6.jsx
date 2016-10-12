@@ -139,13 +139,7 @@ class App extends React.Component {
   }
 
   handleQuit(event) {
-    event.preventDefault();
-    $.ajax({
-      url: '/'
-    })
-    .done(function(response){
-      response
-    })
+
   }
 
   componentDidMount(){
