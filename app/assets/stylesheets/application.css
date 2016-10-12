@@ -15,14 +15,13 @@
  */
 
 .card-svgs {
-  height: 150px;
+  height: 120px;
   border: 1px solid black;
-  width: 120px;
+  width: 180px;
   text-align: center;
   margin: auto;
-  position: relative;
 }
 
 svg {
-  margin-top: 50px;
+  margin-top: 30px;
 }
