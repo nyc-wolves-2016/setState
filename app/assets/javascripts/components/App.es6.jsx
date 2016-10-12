@@ -6,7 +6,7 @@ class App extends React.Component {
       currentBoard: [],
       correctGuesses: [],
       errors: [],
-      gameId: 1
+      gameId: null
     };
 
     // Defines method to pull data from GameView
@@ -15,6 +15,8 @@ class App extends React.Component {
     this.addCorrectGuess = this.addCorrectGuess.bind(this);
     this.handleNextThree = this.handleNextThree.bind(this);
     this.handleQuit = this.handleQuit.bind(this);
+    this.updateGame = this.updateGame.bind(this);
+
   }
 
   constructDeck() {
@@ -107,13 +109,25 @@ class App extends React.Component {
       updateBoard.splice(boardIndex, 1)
     })
     that.removeFromBoard(updateBoard)
+    this.updateGame({valid: true});
   }
 
+  updateGame(bool) {
+    var path = '/games/' + this.state.gameId
+    $.ajax({
+      url: path,
+      method: 'put',
+      data: bool
+    })
+
+  }
 
   handleError(error) {
+
     // False set comes in from GameView
     // Throw 'error' to top of GameView
     // this.setState(prevState)
+    this.updateGame({valid: false});
   }
 
   handleNextThree() {
@@ -138,13 +152,16 @@ class App extends React.Component {
     this.setState({cards: this.constructDeck()}, () => {
       this.setState({currentBoard: this.firstBoard()})
     })
+    this.setState({gameId: this.props.gameId})
   }
 
   render() {
     let {currentBoard, correctGuesses, gameId} = this.state
     return (
       <div className="appContainer">
-        <GameView board={currentBoard} guesses={correctGuesses} gameId={gameId} onThree={this.handleThree} onError={this.handleError} onQuit={this.handleQuit} onNextThree={this.handleNextThree} />
+
+        <GameView key={gameId} board={currentBoard} guesses={correctGuesses} gameId={gameId} onThree={this.handleThree} onError={this.handleError} onQuit={this.handleQuit} onNextThree={this.handleNextThree} />
+
       </div>
     )
   }
