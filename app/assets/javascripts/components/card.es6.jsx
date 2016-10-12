@@ -7,7 +7,7 @@ class Card extends React.Component {
       else if (card.shape === "triangle" && card.shading === "empty"){
         return <EmptyTriangle card={card} />
       }
-      else if (card.shape === "triangle" && card.shading === "fill"){
+      else if (card.shape === "triangle" && card.shading === "filled"){
         return <FilledTriangle card={card} />
       }
       else if (card.shape === "triad" && card.shading === "checkered"){
@@ -16,7 +16,7 @@ class Card extends React.Component {
       else if (card.shape === "triad" && card.shading === "empty"){
         return <EmptyTriad card={card} />
       }
-    else if (card.shape === "triad" && card.shading === "fill"){
+    else if (card.shape === "triad" && card.shading === "filled"){
         return <FilledTriad card={card} />
       }
       else if (card.shape === "sun" && card.shading === "checkered"){
@@ -25,7 +25,7 @@ class Card extends React.Component {
       else if (card.shape === "sun" && card.shading === "empty"){
         return <EmptySun card={card} />
       }
-      else if (card.shape === "sun" && card.shading === "fill"){
+      else if (card.shape === "sun" && card.shading === "filled"){
         return <FilledSun card={card} />
       }
     }
