@@ -2,12 +2,13 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cards: this.constructDeck(),
-      currentBoard: this.firstBoard(),
+      cards: [],
+      currentBoard: [],
       correctGuesses: [],
       errors: [],
       gameId: 1
     };
+
     // Defines method to pull data from GameView
     this.handleThree = this.handleThree.bind(this);
     this.handleError = this.handleError.bind(this);
@@ -58,6 +59,7 @@ class App extends React.Component {
       firstCards.push(this.state.cards[index])
       this.state.cards.splice(index, 1)
     }
+
     return firstCards
   }
 
@@ -82,10 +84,17 @@ class App extends React.Component {
     // this.setState(prevState)
   }
 
+  componentWillMount(){
+    this.setState({cards: this.constructDeck()}, () => {
+      this.setState({currentBoard: this.firstBoard()})
+    })
+  }
+
   render() {
+    let {currentBoard, correctGuesses, gameId} = this.state
     return (
       <div className="appContainer">
-        <GameView data={this.state.currentBoard, this.state.correctGuesses, this.state.gameId} onThree={this.handleThree} onError={this.handleError} />
+        <GameView board={currentBoard} guesses={correctGuesses} gameId={gameId} onThree={this.handleThree} onError={this.handleError} />
       </div>
     )
   }

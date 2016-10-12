@@ -1,7 +1,6 @@
 class GameView extends React.Component {
   constructor() {
     super();
-    this.initialCards = this.initialCards.bind(this);
     this.composeSet = this.composeSet.bind(this);
     this.validateSet = this.validateSet.bind(this);
     this.validateBoard = this.validateBoard.bind(this);
@@ -80,15 +79,16 @@ class GameView extends React.Component {
 
 
   render() {
-    let { cards } = this.props.cards;
+    let { board } = this.props;
     return(
   <div className="board">
   <div className="row">
-    {cards.map((card, i) =>
+    {board.map((card, i) =>
       <div className="col-md-4">
-        <Card key={i} data={card} handleClick={this.composeSet} />
+        <Card key={i} card={card} handleClick={this.composeSet} />
       </div>
-      )}
+      )
+    }
   </div>
   <div className="row">
     <div className="col-md-4 col-md-offset-8">

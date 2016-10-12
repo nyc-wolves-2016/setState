@@ -56,9 +56,11 @@ class Card extends React.Component {
   }
 
   render(){
+    debugger;
+    let {number} = this.props.card
     return (
       <div className="card">
-        {this.drawCard(this.props.card.number, this.props.card)}
+        {this.drawCard(number, this.props.card)}
       </div>
     );
   }
