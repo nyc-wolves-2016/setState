@@ -1,4 +1,8 @@
 class Card extends React.Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   drawSvg(card) {
       if (card.shape === "triangle" && card.shading === "checkered"){
@@ -33,20 +37,20 @@ class Card extends React.Component {
   drawCard(number, card) {
     if (number === 1) {
       return (
-        <div className="card-svgs">
+        <div onClick={this.handleClick} className="card-svgs">
           {this.drawSvg(card)}
         </div>
       )
     } else if (number === 2) {
       return (
-        <div className="card-svgs">
+        <div onClick={this.handleClick} className="card-svgs">
           {this.drawSvg(card)}
           {this.drawSvg(card)}
         </div>
             )
     } else {
       return (
-        <div className="card-svgs">
+        <div onClick={this.handleClick} className="card-svgs">
           {this.drawSvg(card)}
           {this.drawSvg(card)}
           {this.drawSvg(card)}
@@ -55,10 +59,12 @@ class Card extends React.Component {
     }
   }
 
-  
+  handleClick() {
+    var cardValue = this.props.card;
+    this.props.handleClick(cardValue)
+  }
 
   render(){
-    debugger;
     let {number} = this.props.card
     return (
       <div className="card">
