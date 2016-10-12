@@ -6,7 +6,7 @@ class App extends React.Component {
       currentBoard: [],
       correctGuesses: [],
       errors: [],
-      gameId: 1
+      gameId: null
     };
 
     // Defines method to pull data from GameView
@@ -138,13 +138,16 @@ class App extends React.Component {
     this.setState({cards: this.constructDeck()}, () => {
       this.setState({currentBoard: this.firstBoard()})
     })
+    this.setState({gameId: this.props.gameId})
   }
 
   render() {
     let {currentBoard, correctGuesses, gameId} = this.state
     return (
       <div className="appContainer">
-        <GameView board={currentBoard} guesses={correctGuesses} gameId={gameId} onThree={this.handleThree} onError={this.handleError} onQuit={this.handleQuit} onNextThree={this.handleNextThree} />
+
+        <GameView key={gameId} board={currentBoard} guesses={correctGuesses} gameId={gameId} onThree={this.handleThree} onError={this.handleError} onQuit={this.handleQuit} onNextThree={this.handleNextThree} />
+
       </div>
     )
   }

@@ -1,5 +1,5 @@
 <div class="container gameView">
   <h1 class="h1 text-center">Let's Play setState()</h1>
-  <%= react_component 'App' %>
+  <%= react_component 'App', { gameId: @game.id} %>
 </div>
   <%= react_component 'CorrectSetView' %>

@@ -9,7 +9,7 @@ class GamesController < ApplicationController
     @game = Game.new()
     current_user.games << @game
     if @game.save
-      redirect_to '/games/show'
+      redirect_to game_path(@game)
     else
       render 'games/new'
     end
