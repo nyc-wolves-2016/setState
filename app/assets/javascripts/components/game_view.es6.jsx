@@ -84,7 +84,7 @@ class GameView extends React.Component {
   <div className="container board">
     <div className="row">
       {board.map((card, i) =>
-        <div className="col-md-4">
+        <div className="col-md-4 text-center">
           <Card key={i} card={card} handleClick={this.composeSet} />
         </div>
         )
