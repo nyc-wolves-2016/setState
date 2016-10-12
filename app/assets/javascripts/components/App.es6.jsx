@@ -124,8 +124,14 @@ class App extends React.Component {
     })
   }
 
-  handleQuit() {
-
+  handleQuit(event) {
+    event.preventDefault();
+    $.ajax({
+      url: '/'
+    })
+    .done(function(response){
+      response
+    })
   }
 
   componentDidMount(){
