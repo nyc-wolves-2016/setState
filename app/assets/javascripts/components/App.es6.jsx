@@ -13,6 +13,8 @@ class App extends React.Component {
     this.handleThree = this.handleThree.bind(this);
     this.handleError = this.handleError.bind(this);
     this.addCorrectGuess = this.addCorrectGuess.bind(this);
+    this.handleNextThree = this.handleNextThree.bind(this);
+    this.handleQuit = this.handleQuit.bind(this);
   }
 
   constructDeck() {
@@ -83,7 +85,9 @@ class App extends React.Component {
   }
 
   removeFromBoard(newBoard) {
-    newBoard = newBoard.concat(this.nextThree())
+    if (newBoard.length <= 9) {
+      newBoard = newBoard.concat(this.nextThree())
+    }
     this.setState((prevState) => {
       return {
         currentBoard: newBoard
@@ -112,6 +116,24 @@ class App extends React.Component {
     // this.setState(prevState)
   }
 
+  handleNextThree() {
+    this.setState((prevState) => {
+      return {
+        currentBoard: prevState.currentBoard.concat(this.nextThree())
+      }
+    })
+  }
+
+  handleQuit(event) {
+    event.preventDefault();
+    $.ajax({
+      url: '/'
+    })
+    .done(function(response){
+      response
+    })
+  }
+
   componentDidMount(){
     this.setState({cards: this.constructDeck()}, () => {
       this.setState({currentBoard: this.firstBoard()})
@@ -122,7 +144,7 @@ class App extends React.Component {
     let {currentBoard, correctGuesses, gameId} = this.state
     return (
       <div className="appContainer">
-        <GameView board={currentBoard} guesses={correctGuesses} gameId={gameId} onThree={this.handleThree} onError={this.handleError} />
+        <GameView board={currentBoard} guesses={correctGuesses} gameId={gameId} onThree={this.handleThree} onError={this.handleError} onQuit={this.handleQuit} onNextThree={this.handleNextThree} />
       </div>
     )
   }
