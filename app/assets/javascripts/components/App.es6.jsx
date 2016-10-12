@@ -76,6 +76,13 @@ class App extends React.Component {
   handleThree(set) {
     // set comes from onThree / handleThree
     // Remove set from GameView (?)
+    var newCorrect =[];
+    set.forEach(function(setCard) {
+      correctGuesses.push(setCard)
+      var boardIndex = this.state.currentBoard.indexOf(setCard)
+      this.setState({currentBoard: this.state.gicurrentBoard.splice(boardIndex, 1)})
+    })
+    this.setState({correctGuesses: [...this.state.correctGuesses, newCorrect]})
   }
 
   handleError(error) {
